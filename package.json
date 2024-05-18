@@ -1,0 +1,27 @@
+{
+  "name": "fxrjson",
+  "version": "8.1.0",
+  "description": "Convert FXR files from Dark Souls 3, Sekiro, Elden Ring, and Armored Core 6 to and from JSON.",
+  "type": "module",
+  "bin": "fxrjson.js",
+  "author": "CCCode",
+  "license": "Unlicense",
+  "keywords": [
+    "json",
+    "souls",
+    "modding"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvenTorset/fxrjson.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EvenTorset/fxrjson/issues"
+  },
+  "dependencies": {
+    "@cccode/fxr": "^8.1.0",
+    "cli-select": "^1.1.2",
+    "json-beautify": "^1.1.1",
+    "rage-edit": "^1.2.0"
+  }
+}
