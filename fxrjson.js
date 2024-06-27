@@ -105,7 +105,7 @@ await (async () => {
   const content = await fs.readFile(filePath)
 
   if (content.subarray(0, 4).equals(Buffer.from('FXR\0'))) {
-    const fxr = FXR.read(content, game)
+    const fxr = FXR.read(content, game, { round: true })
     await fs.writeFile(filePath + '.json', beautify({
       version: `${name}@${version}`,
       fxr
