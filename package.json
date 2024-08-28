@@ -1,6 +1,6 @@
 {
   "name": "fxrjson",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "description": "Convert FXR files from Dark Souls 3, Sekiro, Elden Ring, and Armored Core 6 to and from JSON.",
   "type": "module",
   "bin": {
