@@ -79,38 +79,37 @@ await (async () => {
     }
   }
 
-  if (game === null) try {
-    const cliSelect = (await import('cli-select')).default
-    console.log('What game is this for?')
-    const result = await cliSelect({
-      values: [
-        'Dark Souls III',
-        'Sekiro: Shadows Die Twice',
-        'Elden Ring',
-        'Armored Core VI Fires of Rubicon',
-      ],
-      defaultValue: 2,
-      indentation: 2,
-      unselected: '[ ]',
-      selected: '[✓]',
-    })
-    game = games[Game[result.id].toLowerCase()]
-    console.log(`Selected: ${result.value}`)
-  } catch {
-    console.log('Canceled.')
-    return
-  }
-
   const filePath = process.argv[2]
   const content = await fs.readFile(filePath)
 
   if (content.subarray(0, 4).equals(Buffer.from('FXR\0'))) {
-    const fxr = FXR.read(content, game, { round: true })
+    const fxr = FXR.read(content, Game.Heuristic, { round: true })
     await fs.writeFile(filePath + '.json', beautify({
       version: `${name}@${version}`,
       fxr
     }, null, 2, 80))
   } else {
+    if (game === null) try {
+      const cliSelect = (await import('cli-select')).default
+      console.log('What game is this for?')
+      const result = await cliSelect({
+        values: [
+          'Dark Souls III',
+          'Sekiro: Shadows Die Twice',
+          'Elden Ring',
+          'Armored Core VI Fires of Rubicon',
+        ],
+        defaultValue: 2,
+        indentation: 2,
+        unselected: '[ ]',
+        selected: '[✓]',
+      })
+      game = games[Game[result.id].toLowerCase()]
+      console.log(`Selected: ${result.value}`)
+    } catch {
+      console.log('Canceled.')
+      return
+    }
     const json = JSON.parse(await fs.readFile(filePath, 'utf-8'))
     if (json.version !== `${name}@${version}`) {
       console.warn(
