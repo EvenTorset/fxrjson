@@ -3,7 +3,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { FXR, Game } from '@cccode/fxr'
-import beautify from 'json-beautify'
+import stringify from 'fabulous-json'
 import { fileURLToPath } from 'node:url'
 
 const CTX_MENU_NAME = 'FXR ⇄ JSON'
@@ -84,10 +84,14 @@ await (async () => {
 
   if (content.subarray(0, 4).equals(Buffer.from('FXR\0'))) {
     const fxr = FXR.read(content, Game.Heuristic, { round: true })
-    await fs.writeFile(filePath + '.json', beautify({
+    await fs.writeFile(filePath + '.json', stringify({
       version: `${name}@${version}`,
       fxr
-    }, null, 2, 80))
+    }, {
+      allowInline(key, value) {
+        return Array.isArray(value) || !('type' in value) || Object.keys(value).length === 1
+      },
+    }))
   } else {
     if (game === null) try {
       const cliSelect = (await import('cli-select')).default

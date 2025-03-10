@@ -23,7 +23,7 @@
   "dependencies": {
     "@cccode/fxr": "^18.0.0",
     "cli-select": "^1.1.2",
-    "json-beautify": "^1.1.1",
+    "fabulous-json": "^0.1.1",
     "rage-edit": "^1.2.0"
   }
 }
