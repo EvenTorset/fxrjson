@@ -21,9 +21,9 @@
     "url": "https://github.com/EvenTorset/fxrjson/issues"
   },
   "dependencies": {
-    "@cccode/fxr": "^20.0.1",
+    "@cccode/fxr": "^20.1.1",
     "cli-select": "^1.1.2",
-    "fabulous-json": "^1.0.0",
+    "fabulous-json": "^1.0.1",
     "rage-edit": "^1.2.0"
   }
 }
