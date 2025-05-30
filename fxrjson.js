@@ -17,6 +17,8 @@ const games = {
   eldenring: Game.EldenRing,
   ac6: Game.ArmoredCore6,
   armoredcore6: Game.ArmoredCore6,
+  nr: Game.Nightreign,
+  nightreign: Game.Nightreign,
 }
 
 async function addCommand(reg, ext) {
@@ -102,6 +104,7 @@ await (async () => {
           'Sekiro: Shadows Die Twice',
           'Elden Ring',
           'Armored Core VI Fires of Rubicon',
+          'Elden Ring Nightreign',
         ],
         defaultValue: 2,
         indentation: 2,
